@@ -10,7 +10,8 @@
 int main(){
 
     print_menu();
+    scanf()
+    menu(i);
     
     return 0;
-
 }
