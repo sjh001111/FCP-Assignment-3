@@ -14,7 +14,7 @@ void print_menu()
            "4. \n");
 }
 
-void menu(i)
+void menu(int i)
 {
     switch(i){
         case 1:

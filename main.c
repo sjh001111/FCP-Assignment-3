@@ -8,9 +8,10 @@
 #include "sorting.h"
 
 int main(){
-
+    
+    int i;
     print_menu();
-    scanf()
+    scanf("%d", &i);
     menu(i);
     
     return 0;
