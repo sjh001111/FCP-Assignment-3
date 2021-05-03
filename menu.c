@@ -2,5 +2,14 @@
  * 13740802 Joonghyuk Seong
 *******************************************************************************/
 
-void save_users();
-char* run_length_compression(char* data);
+#include "menu.h"
+
+void print_menu()
+{
+    printf("\n"
+        "1. \n"
+        "2. \n"
+        "3. \n"
+        "4. \n"
+        );
+}

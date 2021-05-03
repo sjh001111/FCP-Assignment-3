@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "function_prototypes.h": "c"
+        "function_prototypes.h": "c",
+        "search.h": "c"
     }
 }
