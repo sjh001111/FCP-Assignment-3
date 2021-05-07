@@ -2,4 +2,4 @@
  * 이름
 *******************************************************************************/
 
-char* xor_encryption(char* data);
+void XOR_cipher(char *input, char *output);

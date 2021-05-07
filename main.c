@@ -1,17 +1,14 @@
 #include <stdio.h>
 #include "menu.h"
 #include "user.h"
-#include "libs/compression.h"
-#include "libs/decompression.h"
-#include "libs/decryption.h"
-#include "libs/encryption.h"
-#include "libs/searching.h"
-#include "libs/sorting.h"
+
+#define MAX_USERS_SIZE 100
 
 int main()
 {
-    int i;
+	User users[MAX_USERS_SIZE];
 
+    int i;
     while (1)
     {
         print_menu();

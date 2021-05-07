@@ -6,6 +6,8 @@
         "decryption.h": "c",
         "encryption.h": "c",
         "searching.h": "c",
-        "sorting.h": "c"
+        "sorting.h": "c",
+        "rle.h": "c",
+        "search.h": "c"
     }
 }
