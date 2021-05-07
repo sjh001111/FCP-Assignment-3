@@ -8,7 +8,8 @@
 
 void print_menu()
 {
-    printf("\n"
+    printf("Welcome to 조민수 바보\n"
+           "\n"
            "1. Add user (XOR encryption)\n"
            "2. Display users (XOR decryption, Sorting, Searching)\n"
            "3. Save users (Run-length compression)\n"
