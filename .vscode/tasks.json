@@ -7,9 +7,9 @@
 			"command": "C:\\MinGW\\bin\\gcc.exe",
 			"args": [
 				"-g",
-				"${file}","menu.h",
+				"${workspaceFolder}\\*.c","${workspaceFolder}\\libs\\*.c",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				"${workspaceFolder}\\main.exe"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
