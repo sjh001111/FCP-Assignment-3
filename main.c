@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "menu.h"
-#include "encryption.h"
-#include "decryption.h"
-#include "compression.h"
-#include "decompression.h"
-#include "searching.h"
-#include "sorting.h"
+#include "libs/compression.h"
+#include "libs/decompression.h"
+#include "libs/decryption.h"
+#include "libs/encryption.h"
+#include "libs/searching.h"
+#include "libs/sorting.h"
 
 int main(){
     

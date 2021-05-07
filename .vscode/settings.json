@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "menu.h": "c",
+        "compression.h": "c",
+        "decompression.h": "c",
+        "decryption.h": "c",
+        "encryption.h": "c",
+        "searching.h": "c",
+        "sorting.h": "c"
+    }
+}
