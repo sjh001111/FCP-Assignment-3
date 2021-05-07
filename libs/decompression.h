@@ -2,5 +2,4 @@
  * 이름
 *******************************************************************************/
 
-void read_users();
 char* run_length_decompression(char* data);

@@ -2,5 +2,4 @@
  * 13740802 Joonghyuk Seong
 *******************************************************************************/
 
-void save_users();
 char* run_length_compression(char* data);
