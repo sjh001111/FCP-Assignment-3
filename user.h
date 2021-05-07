@@ -1,9 +1,7 @@
 typedef struct User
 {
-    char first_name[16];
-    char last_name[16];
-    char card_num[16];
-    int cvc;
+    char name[64];
+    char password[64];
 } User;
 
 void add_user();

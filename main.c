@@ -7,8 +7,8 @@
 int main()
 {
 	User users[MAX_USERS_SIZE];
+    int i, users_count = 0;
 
-    int i;
     while (1)
     {
         print_menu();
