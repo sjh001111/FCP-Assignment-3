@@ -1,28 +1,34 @@
-#include "main.h"
+/*******************************************************************************
+ * 13740802 Joonghyuk Seong
+ * 
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../main.h"
 #include "rle.h"
 
 char *run_length_compression(char *input)
 {
-    int rLen;
+    int i, j = 0, k, length = strlen(input), char_length;
     char count[MAX_STRING_SIZE];
-    int len = strlen(input);
+    char *output = (char *)malloc(sizeof(char) * (length * 2 + 1));
 
-    char *output = (char *)malloc(sizeof(char) * (len * 2 + 1));
-    int i, j = 0, k;
-
-    for (i = 0; i < len; i++)
+    for (i = 0; i < length; i++)
     {
         output[j++] = input[i];
-        rLen = 1;
-        while (i + 1 < len && input[i] == input[i + 1])
+        char_length = 1;
+        while (i + 1 < length && input[i] == input[i + 1])
         {
-            rLen++;
+            char_length++;
             i++;
         }
-        sprintf(count, "%d", rLen);
+        sprintf(count, "%d", char_length);
         for (k = 0; *(count + k); k++, j++)
             output[j] = count[k];
     }
+
     output[j] = '\0';
 
     return output;

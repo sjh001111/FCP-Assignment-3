@@ -5,7 +5,7 @@
 
 int main()
 {
-	User users[MAX_USERS_SIZE];
+    User users[MAX_USERS_SIZE];
     int i, users_count = 0;
 
     while (1)
@@ -15,10 +15,10 @@ int main()
         switch (i)
         {
         case 1:
-            add_user();
+            add_user(users, &users_count);
             break;
         case 2:
-            display_users();
+            display_users(users, &users_count);
             break;
         case 3:
             save_users();

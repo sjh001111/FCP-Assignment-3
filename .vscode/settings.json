@@ -8,6 +8,7 @@
         "searching.h": "c",
         "sorting.h": "c",
         "rle.h": "c",
-        "search.h": "c"
+        "search.h": "c",
+        "main.h": "c"
     }
 }
