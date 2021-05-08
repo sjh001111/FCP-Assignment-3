@@ -1,4 +1,5 @@
 #include <string.h>
+#include "main.h"
 #include "xor.h"
 
 void XOR_cipher(char *input, char *output)

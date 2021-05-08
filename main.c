@@ -1,8 +1,7 @@
 #include <stdio.h>
+#include "main.h"
 #include "menu.h"
 #include "user.h"
-
-#define MAX_USERS_SIZE 100
 
 int main()
 {

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "main.h"
 #include "user.h"
 #include "libs/rle.h"
 #include "libs/xor.h"
@@ -9,8 +10,8 @@
 void add_user(User users[], int *count)
 {
     User user;
-    char name[64];
-    char password[64];
+    char name[MAX_STRING_SIZE];
+    char password[MAX_STRING_SIZE];
 
     printf("Enter name: ");
     scanf("%64s", name);
