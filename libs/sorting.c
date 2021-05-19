@@ -1,9 +1,3 @@
-#include "../main.h"
-#include "sorting.h"
-
-#include "../main.h"
-#include "searching.h
-
 #include<stdio.h>
 
 //citation <https://www.sanfoundry.com/c-program-implement-radix-sort/>
@@ -46,21 +40,15 @@ void radixsort(int dataset[], int length_of_array) {
     for (value = 1; max / value > 0; value *= 10)
         countSort(dataset, length_of_array, value);
 }
+//Include a function that returns a new array that has the sorted value of the dataset
 
 void show(int dataset[], int length_of_array) {
     int i;
     for (i = 0; i < length_of_array; i++)
         printf("%d ", dataset[i]);
 }
-//Doesn't work
-/*t sortdata(int dataset[]){
-  int length_of_array = sizeof(dataset) / sizeof(dataset[0]);
-  radixsort(dataset, length_of_array);
-  sorted_dataset[] = dataset[];
-  return sorted_dataset[]; 
-}*/ 
 
-/*int main() {
+int main() {
     int dataset[] = { 16,326,23,21,123,123,125,16,7,87,23,12}; // for 돌려서 우리 array의 몇번째 column만 여기 넣기 ex:chart[i][3]
     int length_of_array = sizeof(dataset) / sizeof(dataset[0]); //means length()
     radixsort(dataset, length_of_array);
