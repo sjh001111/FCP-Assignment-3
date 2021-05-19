@@ -22,11 +22,11 @@ int find(int sorted_dataset[] , int length_of_array, int search) {
    return 0; 
 }
 
-/*int main() {
+int main() {
     
-    int sorted_dataset[] = { 1,2,3,4,5,6,7,8,9,10};
+    int sorted_dataset[] = { 1,2,3,4,5,6,7,8,9,10};  //should be the dataset
     int length_of_array = sizeof(sorted_dataset) / sizeof(sorted_dataset[0]);
-    int search = 3; // 이거는 유저한테 몇번 ID찾을건지 얻는거
-    find(sorted_dataset, length_of_array, search);
+    int search = 3; // 이거는 유저한테 몇번 ID찾을건지 얻는거 What data are we going to find
+    find(sorted_dataset, length_of_array, search); // Returns the index number of where the data is.
     return 0;
 }
