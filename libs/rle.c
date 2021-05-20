@@ -53,9 +53,7 @@ char *run_length_decompression(char *input)
             }
         }
         else
-        {
             temp = input[i];
-        }
     }
 
     output[j] = '\0';
