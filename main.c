@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * 13740802 Joonghyuk Seong
+*******************************************************************************/
+
 #include <stdio.h>
 #include "main.h"
 #include "user.h"
@@ -52,7 +56,7 @@ int main()
         case 6:
             return 0;
         default:
-            printf("Error: Please enter the valid number");
+            printf("  Error: Please enter the valid number\n");
         }
     }
 }

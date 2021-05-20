@@ -2,13 +2,8 @@
  * 13740802 Joonghyuk Seong
 *******************************************************************************/
 
-typedef struct Order{
-    int id;
-} Order;
-
 typedef struct User
 {
-    int ID[20];
     char name[64];
     char password[64];
     char card_number[16];

@@ -11,11 +11,11 @@
 
 char *run_length_compression(char *input)
 {
-    int i, j = 0, k, length = strlen(input), char_length;
+    int j = 0, k, length = strlen(input), char_length;
     char count[MAX_STRING_SIZE];
     char *output = (char *)malloc(sizeof(char) * (length * 2 + 1));
 
-    for (i = 0; i < length; i++)
+    for (int i = 0; i < length; i++)
     {
         output[j++] = input[i];
         char_length = 1;
@@ -24,7 +24,6 @@ char *run_length_compression(char *input)
             char_length++;
             i++;
         }
-        sprintf(count, "%d", char_length);
         for (k = 0; *(count + k); k++, j++)
             output[j] = count[k];
     }
@@ -34,8 +33,31 @@ char *run_length_compression(char *input)
     return output;
 }
 
-char *run_length_decompression(char *input){
+char *run_length_decompression(char *input)
+{
+    int j = 0, length = strlen(input);
+    char temp;
+    char *output = (char *)malloc(sizeof(char) * length);
 
+    for (int i = 0; i < length; i++)
+    {
+        if (i % 2)
+        {
+            for (int k = 0; k < (int)(input[i]); k++)
+            {
+                output[j] = temp;
+                j++;
+            }
+        }
+        else
+        {
+            temp = input[i];
+        }
+    }
+
+    output[j] = '\0';
+    printf("%s", output); //debug
+    return output;
 }
 
 /* 에러나서 실행안됨
