@@ -31,6 +31,18 @@ void add_user(User users[], int *count)
     printf("\n  You have successfully added the user.\n\n");
 }
 
+void delete_user(User users[], int *count)
+{
+    if (*count)
+    {
+        *count -= 1;
+    }
+    else
+    {
+        printf("  Error: No employee\n\n");
+    }
+}
+
 void display_users(User users[], int *count)
 {
     if (*count)
@@ -59,9 +71,9 @@ void save_users(User users[], int *count)
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%s|%s|\n",
+        fprintf(fp, "%s|%s\n",
                 run_length_compression(users[i].name),
-                run_length_compression(users[i].password));
+                users[i].password);
     }
 
     fclose(fp);
@@ -79,18 +91,26 @@ void read_users(User users[], int *count)
         return;
     }
     *count = 0;
+    /*
+while( EOF!=fscanf(fp, "%[^|]|%[^|]",
+                   run_length_decompression(user.name), 
+                   run_length_decompression(user.password))){
+            users[i] = user;
+            *count += 1;
+}*/
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
-        if (fscanf(fp, "%s|%s|",
-                   user.name,
-                   run_length_decompression(user.password)) == 2)
+        if (fscanf(fp, "%[^|]|%[^|]",
+                   run_length_decompression(user.name),
+                   user.password) == 2)
         {
+
             users[i] = user;
             *count += 1;
         }
     }
-
+    printf("count = %d", *count);
     fclose(fp);
     printf("  The database has been read successfully.\n\n");
 }

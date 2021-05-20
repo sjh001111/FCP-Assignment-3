@@ -11,6 +11,7 @@ typedef struct User
 } User;
 
 void add_user(User users[], int *count);
+void delete_user(User users[], int *count);
 void display_users(User users[], int *count);
 void save_users(User users[], int *count);
 void read_users(User users[], int *count);

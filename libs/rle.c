@@ -24,6 +24,7 @@ char *run_length_compression(char *input)
             char_length++;
             i++;
         }
+        sprintf(count, "%d", char_length);
         for (k = 0; *(count + k); k++, j++)
             output[j] = count[k];
     }
@@ -39,7 +40,7 @@ char *run_length_decompression(char *input)
     char temp;
     char *output = (char *)malloc(sizeof(char) * length);
 
-    printf("%s", input); //debug
+    printf("%s\n\n", input); //debug
     for (int i = 0; i < length; i++)
     {
         if (input[i] == '\0')
@@ -63,7 +64,7 @@ char *run_length_decompression(char *input)
 
     output[j] = '\0';
     printf("%s", output); //debug
-    //scanf("%d", &j);
+    getchar();
     return output;
 }
 

@@ -49,11 +49,18 @@ int main()
         case 5:
             printf(
                 "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
-                "弛 5. Debug                                              弛\n"
+                "弛 5. Delete user                                        弛\n"
+                "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
+            delete_user(users, &users_count);
+            break;
+        case 6:
+            printf(
+                "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
+                "弛 6. Debug                                              弛\n"
                 "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
             debug(users, &users_count);
             break;
-        case 6:
+        case 7:
             return 0;
         default:
             printf("  Error: Please enter the valid number\n");
@@ -71,8 +78,9 @@ void print_menu()
         "弛 2. Display users (XOR decryption, Sorting, Searching) 弛\n"
         "弛 3. Save users (Run-length compression)                弛\n"
         "弛 4. Read users (Run-length decompression)              弛\n"
-        "弛 5. Debug                                              弛\n"
-        "弛 6. Exit app                                           弛\n"
+        "弛 5. Delete user                                        弛\n"
+        "弛 6. Debug                                              弛\n"
+        "弛 7. Exit app                                           弛\n"
         "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n"
         "  Enter the number: ");
 }
