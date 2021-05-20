@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * 학번 Min Soo Joh
+*******************************************************************************/
+
 #include<stdio.h>
 
 //citation <https://www.sanfoundry.com/c-program-implement-radix-sort/>
@@ -48,6 +52,7 @@ void show(int dataset[], int length_of_array) {
         printf("%d ", dataset[i]);
 }
 
+/* main.c에 이미 메인 함수 있어서 여기 또 넣으면 중복됨
 int main() {
     int dataset[] = { 16,326,23,21,123,123,125,16,7,87,23,12}; // for 돌려서 우리 array의 몇번째 column만 여기 넣기 ex:chart[i][3]
     int length_of_array = sizeof(dataset) / sizeof(dataset[0]); //means length()
@@ -55,3 +60,4 @@ int main() {
     show(dataset, length_of_array);
     return 0;
 }
+*/

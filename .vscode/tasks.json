@@ -8,7 +8,6 @@
 			"args": [
 				"-g",
 				"${workspaceFolder}\\main.c",
-				"${workspaceFolder}\\menu.c",
 				"${workspaceFolder}\\user.c",
 				"${workspaceFolder}\\libs\\*.c",
 				"-o",

@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * 학번 Min Soo Joh
+*******************************************************************************/
+
 #include<stdio.h>
 
 int find(int sorted_dataset[] , int length_of_array, int search) {
@@ -21,7 +25,7 @@ int find(int sorted_dataset[] , int length_of_array, int search) {
    printf("Error, Insert the correct number\n", search);
    return 0; 
 }
-
+/* main.c에 이미 메인 함수 있어서 여기 또 넣으면 중복됨
 int main() {
     
     int sorted_dataset[] = { 1,2,3,4,5,6,7,8,9,10};  //should be the dataset
@@ -30,3 +34,4 @@ int main() {
     find(sorted_dataset, length_of_array, search); // Returns the index number of where the data is.
     return 0;
 }
+*/

@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * 13740802 Joonghyuk Seong
+*******************************************************************************/
+
 #include <stdio.h>
 #include <string.h>
 #include "main.h"
@@ -29,14 +33,74 @@ void add_user(User users[], int *count)
 
 void display_users(User users[], int *count)
 {
-    int i;
+    if (*count)
+    {
+        printf("Name       Encrypted password  \n"
+               "---------- --------------------\n");
 
+        for (int i = 0; i < *count; i++)
+        {
+            printf("%-10s %-20ss\n",
+                   users[i].name,
+                   users[i].password);
+        }
+    }
+    else
+    {
+        printf("No employee.\n");
+    }
+}
+
+void save_users(User users[], int *count)
+{
+    FILE *fp;
+
+    fp = fopen(DB_FILE_NAME, "w");
+
+    for (int i = 0; i < *count; i++)
+    {
+        fprintf(fp, "%s %s\n",
+                run_length_compression(users[i].name),
+                run_length_compression(users[i].password));
+    }
+
+    fclose(fp);
+}
+
+void read_users(User users[], int *count)
+{
+    FILE *fp;
+    User user;
+
+    if ((fp = fopen(DB_FILE_NAME, "r")) == NULL)
+    {
+        printf("Read error\n");
+        return;
+    }
+    *count = 0;
+
+    for (int i = 0; i < MAX_USERS_SIZE; i++)
+    {
+        if (fscanf(fp, "%s %s",
+                   run_length_decompression(users[i].name),
+                   run_length_decompression(users[i].password)) == 2)
+        {
+            users[i] = user;
+            *count += 1;
+        }
+    }
+
+    fclose(fp);
+}
+
+void debug(User users[], int *count)
+{
     if (*count)
     {
         printf("Name       Encrypted password   Decrypted password  \n"
                "---------- -------------------- --------------------\n");
 
-        for (i = 0; i < *count; i++)
+        for (int i = 0; i < *count; i++)
         {
             printf("%-10s %-20s %-10s\n",
                    users[i].name,
@@ -48,16 +112,4 @@ void display_users(User users[], int *count)
     {
         printf("No employee.\n");
     }
-}
-
-void save_users()
-{
-    char input[MAX_STRING_SIZE] = "test";
-    char *output;
-    output = run_length_compression(input);
-    printf("%s", output);
-}
-
-void read_users()
-{
 }

@@ -1,6 +1,5 @@
 /*******************************************************************************
  * 13740802 Joonghyuk Seong
- * 
 *******************************************************************************/
 
 typedef struct Order{
@@ -18,5 +17,6 @@ typedef struct User
 
 void add_user(User users[], int *count);
 void display_users(User users[], int *count);
-void save_users();
-void read_users();
+void save_users(User users[], int *count);
+void read_users(User users[], int *count);
+void debug(User users[], int *count);

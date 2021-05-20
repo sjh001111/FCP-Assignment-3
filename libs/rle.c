@@ -1,6 +1,6 @@
 /*******************************************************************************
  * 13740802 Joonghyuk Seong
- * 
+ * 학번 Dongwok Hong
 *******************************************************************************/
 
 #include <stdio.h>
@@ -34,8 +34,12 @@ char *run_length_compression(char *input)
     return output;
 }
 
+char *run_length_decompression(char *input){
 
-{char *run_length_decompression(char *input)
+}
+
+/* 에러나서 실행안됨
+char *run_length_decompression(char *input)
 {
     char* decompression;
     int decompression_length = run_length_compression(input);
@@ -67,4 +71,4 @@ char *run_length_compression(char *input)
     return decompression;
 }
 }
-}
+*/
