@@ -36,11 +36,10 @@ void delete_user(User users[], int *count)
     if (*count)
     {
         *count -= 1;
+        printf("\n  You have successfully deleted the user.\n\n");
     }
     else
-    {
         printf("  Error: No employee\n\n");
-    }
 }
 
 void display_users(User users[], int *count)
@@ -59,9 +58,7 @@ void display_users(User users[], int *count)
         printf("\n");
     }
     else
-    {
         printf("  Error: No employee\n\n");
-    }
 }
 
 void save_users(User users[], int *count)
