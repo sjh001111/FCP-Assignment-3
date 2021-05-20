@@ -47,7 +47,7 @@ void display_users(User users[], int *count)
     }
     else
     {
-        printf("  Error: No employee.\n\n");
+        printf("  Error: No employee\n\n");
     }
 }
 
@@ -65,7 +65,7 @@ void save_users(User users[], int *count)
     }
 
     fclose(fp);
-        printf("  You have successfully saved the users to the database.\n\n");
+    printf("  You have successfully saved the users to the database.\n\n");
 }
 
 void read_users(User users[], int *count)
@@ -75,7 +75,7 @@ void read_users(User users[], int *count)
 
     if ((fp = fopen(DB_FILE_NAME, "r")) == NULL)
     {
-        printf("  Read error\n");
+        printf("  Error: No database file\n");
         return;
     }
     *count = 0;
@@ -83,8 +83,8 @@ void read_users(User users[], int *count)
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
         if (fscanf(fp, "%s|%s|",
-                   run_length_decompression(users[i].name),
-                   run_length_decompression(users[i].password)) == 2)
+                   user.name,
+                   run_length_decompression(user.password)) == 2)
         {
             users[i] = user;
             *count += 1;
@@ -92,7 +92,7 @@ void read_users(User users[], int *count)
     }
 
     fclose(fp);
-        printf("  The database has been read successfully.\n\n");
+    printf("  The database has been read successfully.\n\n");
 }
 
 void debug(User users[], int *count)
@@ -112,6 +112,6 @@ void debug(User users[], int *count)
     }
     else
     {
-        printf("  Error: No employee.\n\n");
+        printf("  Error: No employee\n\n");
     }
 }

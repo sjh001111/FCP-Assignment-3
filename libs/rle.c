@@ -39,24 +39,31 @@ char *run_length_decompression(char *input)
     char temp;
     char *output = (char *)malloc(sizeof(char) * length);
 
+    printf("%s", input); //debug
     for (int i = 0; i < length; i++)
     {
+        if (input[i] == '\0')
+            break;
         if (i % 2)
         {
-            for (int k = 0; k < (int)(input[i]); k++)
+            int count = input[i] - '0';
+            for (int k = 0; k < count; k++)
             {
                 output[j] = temp;
                 j++;
+                printf("%c %d\n", temp, k + 1); //debug
             }
         }
         else
         {
             temp = input[i];
+            printf("char = %c\n", temp); //debug
         }
     }
 
     output[j] = '\0';
     printf("%s", output); //debug
+    //scanf("%d", &j);
     return output;
 }
 
