@@ -36,7 +36,7 @@ void delete_user(User users[], int *count)
     if (*count)
     {
         *count -= 1;
-        printf("\n  You have successfully deleted the user.\n\n");
+        printf("  You have successfully deleted the user.\n\n");
     }
     else
         printf("  Error: No employee\n\n");
@@ -46,12 +46,12 @@ void display_users(User users[], int *count)
 {
     if (*count)
     {
-        printf("  Name       Encrypted password  \n"
-               "  ---------- --------------------\n");
+        printf("  Name                 Encrypted password  \n"
+               "  -------------------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
-            printf("  %-10s %-20s\n",
+            printf("  %-20s %-20s\n",
                    users[i].name,
                    users[i].password);
         }
@@ -112,12 +112,12 @@ void debug(User users[], int *count)
 {
     if (*count)
     {
-        printf("  Name       Encrypted password   Decrypted password  \n"
-               "  ---------- -------------------- --------------------\n");
+        printf("  Name                 Encrypted password   Decrypted password  \n"
+               "  -------------------- -------------------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
-            printf("  %-10s %-20s %-10s\n",
+            printf("  %-20s %-20s %-10s\n",
                    users[i].name,
                    users[i].password,
                    XOR_cipher(users[i].password));
