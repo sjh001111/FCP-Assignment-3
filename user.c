@@ -56,6 +56,7 @@ void display_users(User users[], int *count)
                    users[i].name,
                    users[i].password);
         }
+        printf("\n");
     }
     else
     {
@@ -71,9 +72,9 @@ void save_users(User users[], int *count)
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%s|%s\n",
+        fprintf(fp, "%s\t%s\n",
                 run_length_compression(users[i].name),
-                users[i].password);
+                run_length_compression(users[i].password));
     }
 
     fclose(fp);
@@ -91,26 +92,21 @@ void read_users(User users[], int *count)
         return;
     }
     *count = 0;
-    /*
-while( EOF!=fscanf(fp, "%[^|]|%[^|]",
-                   run_length_decompression(user.name), 
-                   run_length_decompression(user.password))){
-            users[i] = user;
-            *count += 1;
-}*/
+
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
-        if (fscanf(fp, "%[^|]|%[^|]",
-                   run_length_decompression(user.name),
+        if (fscanf(fp, "%s\t%s",
+                   user.name,
                    user.password) == 2)
         {
+            strcpy(user.name, run_length_decompression(user.name));
+            strcpy(user.password, run_length_decompression(user.password));
 
             users[i] = user;
             *count += 1;
         }
     }
-    printf("count = %d", *count);
     fclose(fp);
     printf("  The database has been read successfully.\n\n");
 }
@@ -129,6 +125,7 @@ void debug(User users[], int *count)
                    users[i].password,
                    XOR_cipher(users[i].password));
         }
+        printf("\n");
     }
     else
     {

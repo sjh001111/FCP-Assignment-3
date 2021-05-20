@@ -30,7 +30,6 @@ char *run_length_compression(char *input)
     }
 
     output[j] = '\0';
-
     return output;
 }
 
@@ -40,7 +39,6 @@ char *run_length_decompression(char *input)
     char temp;
     char *output = (char *)malloc(sizeof(char) * length);
 
-    printf("%s\n\n", input); //debug
     for (int i = 0; i < length; i++)
     {
         if (input[i] == '\0')
@@ -52,23 +50,19 @@ char *run_length_decompression(char *input)
             {
                 output[j] = temp;
                 j++;
-                printf("%c %d\n", temp, k + 1); //debug
             }
         }
         else
         {
             temp = input[i];
-            printf("char = %c\n", temp); //debug
         }
     }
 
     output[j] = '\0';
-    printf("%s", output); //debug
-    getchar();
     return output;
 }
 
-/* 에러나서 실행안됨
+/* 에러남
 char *run_length_decompression(char *input)
 {
     char* decompression;
