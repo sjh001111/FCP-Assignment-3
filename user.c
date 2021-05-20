@@ -17,37 +17,37 @@ void add_user(User users[], int *count)
     char name[MAX_STRING_SIZE];
     char password[MAX_STRING_SIZE];
 
-    printf("Enter name: ");
+    printf("  Enter name: ");
     scanf("%64s", name);
     strcpy(user.name, name);
 
-    printf("Enter password: ");
+    printf("  Enter password: ");
     scanf("%64s", password);
     strcpy(user.password, XOR_cipher(password));
 
     users[*count] = user;
     *count += 1;
 
-    XOR_cipher(user.password);
+    printf("\n  User added successfully\n");
 }
 
 void display_users(User users[], int *count)
 {
     if (*count)
     {
-        printf("Name       Encrypted password  \n"
-               "---------- --------------------\n");
+        printf("  Name       Encrypted password  \n"
+               "  ---------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
-            printf("%-10s %-20ss\n",
+            printf("  %-10s %-20s\n",
                    users[i].name,
                    users[i].password);
         }
     }
     else
     {
-        printf("No employee.\n");
+        printf("  No employee.\n");
     }
 }
 
@@ -74,7 +74,7 @@ void read_users(User users[], int *count)
 
     if ((fp = fopen(DB_FILE_NAME, "r")) == NULL)
     {
-        printf("Read error\n");
+        printf("  Read error\n");
         return;
     }
     *count = 0;
@@ -97,12 +97,12 @@ void debug(User users[], int *count)
 {
     if (*count)
     {
-        printf("Name       Encrypted password   Decrypted password  \n"
-               "---------- -------------------- --------------------\n");
+        printf("  Name       Encrypted password   Decrypted password  \n"
+               "  ---------- -------------------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
-            printf("%-10s %-20s %-10s\n",
+            printf("  %-10s %-20s %-10s\n",
                    users[i].name,
                    users[i].password,
                    XOR_cipher(users[i].password));
@@ -110,6 +110,6 @@ void debug(User users[], int *count)
     }
     else
     {
-        printf("No employee.\n");
+        printf("  No employee.\n");
     }
 }
