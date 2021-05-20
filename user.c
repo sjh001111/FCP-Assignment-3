@@ -72,7 +72,7 @@ void save_users(User users[], int *count)
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%s\t%s\n",
+        fprintf(fp, "%s|%s\n",
                 run_length_compression(users[i].name),
                 run_length_compression(users[i].password));
     }
@@ -96,7 +96,7 @@ void read_users(User users[], int *count)
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
-        if (fscanf(fp, "%s\t%s",
+        if (fscanf(fp, "%[^|]|%[^|]", //%s\t%s",
                    user.name,
                    user.password) == 2)
         {
