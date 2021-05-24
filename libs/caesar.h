@@ -1,8 +1,3 @@
-/*******************************************************************************
- * 학번 Myungseok Seo
- * 학번 Hong Joo Lee
-*******************************************************************************/
-
 char *caesar_encryption(char *input);
 char *caesar_decryption(char *input);
 int is_upper(int c);

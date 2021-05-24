@@ -1,7 +1,3 @@
-/*******************************************************************************
- * 13740802 Joonghyuk Seong
-*******************************************************************************/
-
 #include <stdio.h>
 #include <string.h>
 #include "main.h"
@@ -76,9 +72,10 @@ void save_users(User users[], int *count)
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%s|%s\n",
+        fprintf(fp, "%s|%s|%s\n",
                 run_length_compression(users[i].name),
-                run_length_compression(users[i].password));
+                run_length_compression(users[i].password),
+                run_length_compression(users[i].card_number));
     }
 
     fclose(fp);
@@ -97,15 +94,15 @@ void read_users(User users[], int *count)
     }
     *count = 0;
 
-
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
-        if (fscanf(fp, "%[^|]|%[^|]", //%s\t%s",
+        if (fscanf(fp, "%[^|]|%[^|]|%[^|]",
                    user.name,
                    user.password) == 2)
         {
             strcpy(user.name, run_length_decompression(user.name));
             strcpy(user.password, run_length_decompression(user.password));
+            strcpy(user.password, run_length_decompression(user.card_number));
 
             users[i] = user;
             *count += 1;
@@ -117,17 +114,18 @@ void read_users(User users[], int *count)
 
 void debug(User users[], int *count)
 {
+    display_users(users, count);
     if (*count)
     {
-        printf("  Name                 Encrypted password   Decrypted password  \n"
+        printf("  Name                 Decrypted password   Decrypted card num  \n"
                "  -------------------- -------------------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
             printf("  %-20s %-20s %-10s\n",
                    users[i].name,
-                   users[i].password,
-                   XOR_cipher(users[i].password));
+                   XOR_cipher(users[i].password),
+                   caesar_decryption(users[i].card_number));
         }
         printf("\n");
     }
