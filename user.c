@@ -98,11 +98,12 @@ void read_users(User users[], int *count)
     {
         if (fscanf(fp, "%[^|]|%[^|]|%[^|]",
                    user.name,
-                   user.password) == 2)
+                   user.password,
+                   user.card_number) == 2)
         {
             strcpy(user.name, run_length_decompression(user.name));
             strcpy(user.password, run_length_decompression(user.password));
-            strcpy(user.password, run_length_decompression(user.card_number));
+            strcpy(user.card_number, run_length_decompression(user.card_number));
 
             users[i] = user;
             *count += 1;
