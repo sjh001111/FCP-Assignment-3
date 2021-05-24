@@ -8,6 +8,7 @@
 #include "user.h"
 #include "libs/rle.h"
 #include "libs/xor.h"
+#include "libs/caesar.h"
 #include "libs/searching.h"
 #include "libs/sorting.h"
 
@@ -16,6 +17,7 @@ void add_user(User users[], int *count)
     User user;
     char name[MAX_STRING_SIZE];
     char password[MAX_STRING_SIZE];
+    char card_number[MAX_STRING_SIZE];
 
     printf("  Enter name: ");
     scanf("%64s", name);
@@ -24,6 +26,10 @@ void add_user(User users[], int *count)
     printf("  Enter password: ");
     scanf("%64s", password);
     strcpy(user.password, XOR_cipher(password));
+
+    printf("  Enter card number: ");
+    scanf("%64s", card_number);
+    strcpy(user.card_number, caesar_encryption(card_number));
 
     users[*count] = user;
     *count += 1;
@@ -46,14 +52,15 @@ void display_users(User users[], int *count)
 {
     if (*count)
     {
-        printf("  Name                 Encrypted password  \n"
-               "  -------------------- --------------------\n");
+        printf("  Name                 Encrypted password   Encrypted card num  \n"
+               "  -------------------- -------------------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
-            printf("  %-20s %-20s\n",
+            printf("  %-20s %-20s %-20s\n",
                    users[i].name,
-                   users[i].password);
+                   users[i].password,
+                   users[i].card_number);
         }
         printf("\n");
     }
