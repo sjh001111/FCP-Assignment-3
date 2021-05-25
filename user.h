@@ -10,7 +10,6 @@ typedef struct User
     char name[64];
     char password[64];
     char card_number[16];
-    // 주소, ip, 주문 배열
 } User;
 
 void add_user(User users[], int *count);

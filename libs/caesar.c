@@ -48,6 +48,7 @@ int is_upper(int c)
 {
     return ((c >= 'A' && c <= 'Z'));
 }
+
 int is_lower(int c)
 {
     return ((c >= 'a' && c <= 'z'));

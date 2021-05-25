@@ -9,15 +9,15 @@ int main()
     User users[MAX_USERS_SIZE];
     int i, count = 0;
 
-    while (1)
+    do
     {
         print_menu();
         scanf("%d", &i);
         getchar();
         printf("\n");
-        if (menu(users, &count, i))
-            break;
-    }
+    } while (menu(users, &count, i));
+
+    return 0;
 }
 
 void print_menu()
@@ -25,7 +25,7 @@ void print_menu()
     printf(
         "旨收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收旬\n"
         "早 Welcome to UTS Uber                                                      早\n"
-        "竹收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收糸\n"
+        "竹收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收羊\n"
         "弛 1. Add user (XOR encryption, caesar encryption)                          弛\n"
         "弛 2. Display users (XOR decryption, caesar decryption, Sorting, Searching) 弛\n"
         "弛 3. Save users (Run-length compression)                                   弛\n"
@@ -84,9 +84,9 @@ int menu(User users[], int *count, int i)
         debug(users, count);
         break;
     case 7:
-        return 1;
+        return 0;
     default:
         printf("  Error: Please enter the valid number\n\n");
     }
-    return 0;
+    return 1;
 }
