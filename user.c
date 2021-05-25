@@ -2,6 +2,7 @@
 #include <string.h>
 #include "user.h"
 #include "libs/rle.h"
+//#include "libs/huffman.h"
 #include "libs/xor.h"
 #include "libs/caesar.h"
 #include "libs/searching.h"
@@ -67,7 +68,7 @@ void save_users(User users[], int *count)
 {
     FILE *fp;
 
-    fp = fopen(DB_FILE_NAME, "w");
+    fp = fopen("rle_db.txt", "w");
 
     for (int i = 0; i < *count; i++)
     {
@@ -76,8 +77,10 @@ void save_users(User users[], int *count)
                 run_length_compression(users[i].password),
                 run_length_compression(users[i].card_number));
     }
-
     fclose(fp);
+
+//허프만 압축
+
     printf("  You have successfully saved the users to the database.\n\n");
 }
 
@@ -86,7 +89,7 @@ void read_users(User users[], int *count)
     FILE *fp;
     User user;
 
-    if ((fp = fopen(DB_FILE_NAME, "r")) == NULL)
+    if ((fp = fopen("rle_db.txt", "r")) == NULL)
     {
         printf("  Error: No database file\n");
         return;
@@ -110,6 +113,9 @@ void read_users(User users[], int *count)
         }
     }
     fclose(fp);
+    
+//허프만 압축 해제
+
     printf("  The database has been read successfully.\n\n");
 }
 

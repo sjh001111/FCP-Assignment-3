@@ -1,9 +1,8 @@
 #ifndef USER_H
 #define USER_H
 
-#define MAX_USERS_SIZE 256
+#define MAX_USERS_SIZE 64
 #define MAX_STRING_SIZE 256
-#define DB_FILE_NAME "db.txt"
 
 typedef struct User
 {

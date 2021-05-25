@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror
 LIBDIR = ./libs
 
-main.out: main.o user.o caesar.o rle.o searching.o sorting.o xor.o
+main.out: main.o user.o caesar.o rle.o searching.o sorting.o xor.o # huffman.o
 	$(CC) $(CFLAGS) -o main.out main.o user.o caesar.o rle.o searching.o sorting.o xor.o
 	
 main.o: main.c
@@ -13,7 +13,10 @@ user.o: user.c
 	
 caesar.o: $(LIBDIR)/caesar.c
 	$(CC) $(CFLAGS) -c -o caesar.o $(LIBDIR)/caesar.c
-	
+
+# huffman.o: $(LIBDIR)/huffman.c
+#	$(CC) $(CFLAGS) -c -o huffman.o $(LIBDIR)/huffman.
+
 rle.o: $(LIBDIR)/rle.c
 	$(CC) $(CFLAGS) -c -o rle.o $(LIBDIR)/rle.c
 	
