@@ -1,11 +1,12 @@
 #ifndef USER_H
 #define USER_H
 
-#define MAX_USERS_SIZE 64
+#define MAX_USERS_SIZE 9999
 #define MAX_STRING_SIZE 256
 
 typedef struct User
 {
+    int ID;
     char name[MAX_STRING_SIZE];
     char password[MAX_STRING_SIZE];
     char card_number[MAX_STRING_SIZE];
