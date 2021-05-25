@@ -33,12 +33,12 @@ void countSort(int dataset[], int length_of_array, int value) {
         dataset[i] =sort_dataset[i];
 }
 // Sorts the dataset
-void radixsort(int dataset[], int length_of_array) {
-    int max = getMax(dataset, length_of_array);
+void radixsort(User users[], int *count) {
+    int max = getMax(users, count);
     int value;
     
     for (value = 1; max / value > 0; value *= 10)
-        countSort(dataset, length_of_array, value);
+        countSort(users, count , value);
 }
 //Include a function that returns a new array that has the sorted value of the dataset
 
