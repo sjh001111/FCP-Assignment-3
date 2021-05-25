@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include "main.h"
 #include "user.h"
 #include "libs/rle.h"
 #include "libs/xor.h"

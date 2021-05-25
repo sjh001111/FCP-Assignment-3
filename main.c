@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "main.h"
 #include "user.h"
 
 void print_menu();

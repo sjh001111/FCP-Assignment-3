@@ -11,7 +11,8 @@
         "search.h": "c",
         "main.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "user.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

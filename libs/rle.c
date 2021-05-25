@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../main.h"
+#include "../user.h"
 #include "rle.h"
 
 char *run_length_compression(char *input)
