@@ -1,10 +1,10 @@
 #include<stdio.h>
 
-int find(int sorted_dataset[] , int length_of_array, int search) {
+int find(User users[] , int *count, int search) {
     int first, last, middle; //에러 , count;
     //에러 count = 0; 
     first = 0;
-    last = length_of_array - 1;
+    last = count - 1;
     middle = (first+last)/2;
     while (first <= last) {
       if (sorted_dataset[middle] < search)
@@ -19,7 +19,7 @@ int find(int sorted_dataset[] , int length_of_array, int search) {
    }
    if (first > last)
    //에러 printf("Error, Insert the correct number\n", search);
-   return 0; 
+   return -1; 
 }
 /* main.c에 이미 메인 함수 있어서 여기 또 넣으면 중복됨
 int main() {
