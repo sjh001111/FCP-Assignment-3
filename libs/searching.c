@@ -1,8 +1,8 @@
 #include<stdio.h>
 
 int find(int sorted_dataset[] , int length_of_array, int search) {
-    int first, last, middle, count;
-    count = 0; 
+    int first, last, middle; //에러 , count;
+    //에러 count = 0; 
     first = 0;
     last = length_of_array - 1;
     middle = (first+last)/2;
@@ -18,7 +18,7 @@ int find(int sorted_dataset[] , int length_of_array, int search) {
       middle = (first + last)/2;
    }
    if (first > last)
-   printf("Error, Insert the correct number\n", search);
+   //에러 printf("Error, Insert the correct number\n", search);
    return 0; 
 }
 /* main.c에 이미 메인 함수 있어서 여기 또 넣으면 중복됨

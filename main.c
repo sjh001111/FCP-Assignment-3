@@ -27,8 +27,12 @@ int main(int argc, char *argv[])
 void print_menu(int debug)
 {
     printf(
-        "旨收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收旬\n"
-        "早 Welcome to UTS Uber                                                      早\n"
+        "旨收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收旬\n");
+    if (debug)
+        printf("早 Welcome to UTS Uber (Debug mode)                                         早\n");
+    else
+        printf("早 Welcome to UTS Uber                                                      早\n");
+    printf(
         "竹收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收羊\n"
         "弛 1. Add user (XOR encryption, caesar encryption)                          弛\n"
         "弛 2. Display users (XOR decryption, caesar decryption, Sorting, Searching) 弛\n"
@@ -36,8 +40,7 @@ void print_menu(int debug)
         "弛 4. Read users (Run-length decompression)                                 弛\n"
         "弛 5. Delete user                                                           弛\n");
     if (debug)
-        printf(
-            "弛 6. Debug                                                                 弛\n");
+        printf("弛 6. Debug                                                                 弛\n");
     printf(
         "弛 7. Exit app                                                              弛\n"
         "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n"
@@ -90,7 +93,7 @@ int menu(User users[], int *count, int i, int debug)
                 "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
                 "弛 6. Debug                                                                 弛\n"
                 "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
-            debug(users, count);
+            display_debug(users, count);
         }
         break;
     case 7:

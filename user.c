@@ -20,11 +20,11 @@ void add_user(User users[], int *count)
 
     printf("  Enter password: ");
     scanf("%64s", password);
-    strcpy(user.password, XOR_cipher(password));
+    strcpy(user.password, caesar_encryption(password));
 
     printf("  Enter card number: ");
     scanf("%64s", card_number);
-    strcpy(user.card_number, caesar_encryption(card_number));
+    strcpy(user.card_number, XOR_cipher(card_number));
 
     users[*count] = user;
     *count += 1;
@@ -71,7 +71,7 @@ void save_users(User users[], int *count)
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%s|%s|%s\n",
+        fprintf(fp, "%s-%s-%s\n",
                 run_length_compression(users[i].name),
                 run_length_compression(users[i].password),
                 run_length_compression(users[i].card_number));
@@ -91,14 +91,15 @@ void read_users(User users[], int *count)
         printf("  Error: No database file\n");
         return;
     }
+
     *count = 0;
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
-        if (fscanf(fp, "%[^|]|%[^|]|%[^|]",
+        if (fscanf(fp, "%[^-]-%[^-]-%[^-]",
                    user.name,
                    user.password,
-                   user.card_number) == 2)
+                   user.card_number) == 3)
         {
             strcpy(user.name, run_length_decompression(user.name));
             strcpy(user.password, run_length_decompression(user.password));
@@ -112,25 +113,22 @@ void read_users(User users[], int *count)
     printf("  The database has been read successfully.\n\n");
 }
 
-void debug(User users[], int *count)
+void display_debug(User users[], int *count)
 {
     display_users(users, count);
     if (*count)
     {
         printf("  Name                 Decrypted password   Decrypted card num  \n"
+               "                       (Caesar Cipher)      (XOR Cipher)        \n"
                "  -------------------- -------------------- --------------------\n");
 
         for (int i = 0; i < *count; i++)
         {
-            printf("  %-20s %-20s %-10s\n",
+            printf("  %-20s %-20s %-20s\n",
                    users[i].name,
-                   XOR_cipher(users[i].password),
-                   caesar_decryption(users[i].card_number));
+                   caesar_decryption(users[i].password),
+                   XOR_cipher(users[i].card_number));
         }
         printf("\n");
-    }
-    else
-    {
-        printf("  Error: No employee\n\n");
     }
 }
