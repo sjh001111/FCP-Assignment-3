@@ -63,7 +63,7 @@ void display_users(User users[], int *count)
     if (*count)
     {
         printf("  ID   Name                 Encrypted password   Encrypted card num  \n"
-               "  ---- -------------------- -------------------- --------------------\n");
+               "  ──── ──────────────────── ──────────────────── ────────────────────\n");
 
         for (int i = 0; i < *count; i++)
         {
@@ -148,7 +148,7 @@ void search_user(User users[], int *count)
 
     if (index != -1)
         printf("  ID   Name                 Encrypted password   Encrypted card num  \n"
-               "  ---- -------------------- -------------------- --------------------\n"
+               "  ──── ──────────────────── ──────────────────── ────────────────────\n"
                "  %4d %20.20s %20.20s %20.20s\n\n",
                users[index].ID,
                users[index].name,
@@ -181,7 +181,7 @@ void debug(User users[], int *count)
     {
         printf("  ID   Name                 Decrypted password   Decrypted card num  \n"
                "                            (Caesar Cipher)      (XOR Cipher)        \n"
-               "  ---- -------------------- -------------------- --------------------\n");
+               "  ──── ──────────────────── ──────────────────── ────────────────────\n");
 
         for (int i = 0; i < *count; i++)
         {
