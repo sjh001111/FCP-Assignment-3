@@ -6,8 +6,8 @@
 //#include "libs/huffman.h"
 #include "libs/xor.h"
 #include "libs/caesar.h"
-#include "libs/searching.h"
-#include "libs/sorting.h"
+#include "libs/binary_search.h"
+#include "libs/radix_sort.h"
 
 void add_user(User users[], int *count)
 {
@@ -37,25 +37,25 @@ void add_user(User users[], int *count)
     scanf("%64s", password);
     strcpy(user.password, caesar_encryption(password));
 
-    printf("  Enter card number: ");
-    scanf("%64s", card_number);
-    strcpy(user.card_number, XOR_cipher(card_number));
-
+    while (1)
+    {
+        printf("  Enter card number: ");
+        scanf("%16s", card_number);
+        long long num = atoll(card_number);
+        if (num >= 100000000000000 && num <= 9999999999999999)
+        {
+            strcpy(user.card_number, XOR_cipher(card_number));
+            break;
+        }
+        else
+        {
+            printf("\n  Error: Please enter the valid card number\n\n");
+        }
+    }
     users[*count] = user;
     *count += 1;
 
     printf("\n  You have successfully added the user.\n\n");
-}
-
-void delete_user(User users[], int *count)
-{
-    if (*count)
-    {
-        *count -= 1;
-        printf("  You have successfully deleted the user.\n\n");
-    }
-    else
-        printf("  Error: No employee\n\n");
 }
 
 void display_users(User users[], int *count)
@@ -67,7 +67,7 @@ void display_users(User users[], int *count)
 
         for (int i = 0; i < *count; i++)
         {
-            printf("  %-4d %-20s %-20s %-20s\n",
+            printf("  %4d %20.20s %20.20s %20.20s\n",
                    users[i].ID,
                    users[i].name,
                    users[i].password,
@@ -87,7 +87,7 @@ void save_users(User users[], int *count)
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%d-%s-%s-%s\n",
+        fprintf(fp, "%d||%s||%s||%s\n",
                 users[i].ID,
                 run_length_compression(users[i].name),
                 run_length_compression(users[i].password),
@@ -113,7 +113,7 @@ void read_users(User users[], int *count)
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
     {
-        if (fscanf(fp, "%d-%[^-]-%[^-]-%[^-]",
+        if (fscanf(fp, "%d||%[^||]||%[^||]||%[^||]",
                    &user.ID,
                    user.name,
                    user.password,
@@ -132,8 +132,50 @@ void read_users(User users[], int *count)
     printf("  The database has been read successfully.\n\n");
 }
 
-void display_debug(User users[], int *count)
+void sort_users(User users[], int *count)
 {
+    radix_sort(users, *count);
+    printf("  Users have been sorted successfully.\n\n");
+}
+
+void search_user(User users[], int *count)
+{
+    int ID;
+
+    printf("  Enter the ID to find : ");
+    scanf("%d", &ID);
+    int index = binary_search(users, *count, ID);
+
+    if (index != -1)
+        printf("  ID   Name                 Encrypted password   Encrypted card num  \n"
+               "  ---- -------------------- -------------------- --------------------\n"
+               "  %4d %20.20s %20.20s %20.20s\n\n",
+               users[index].ID,
+               users[index].name,
+               users[index].password,
+               users[index].card_number);
+    else
+        printf("  Error: No matching ID\n\n");
+}
+
+void delete_user(User users[], int *count)
+{
+    if (*count)
+    {
+        *count -= 1;
+        printf("  You have successfully deleted the user.\n\n");
+    }
+    else
+        printf("  Error: No employee\n\n");
+}
+
+void debug(User users[], int *count)
+{
+    printf("  File : %s\n"
+           "  Func :%s()\n"
+           "  Line : %05d\n\n",
+           __FILE__, __func__, __LINE__);
+
     display_users(users, count);
     if (*count)
     {
@@ -143,7 +185,7 @@ void display_debug(User users[], int *count)
 
         for (int i = 0; i < *count; i++)
         {
-            printf("  %-4d %-20s %-20s %-20s\n",
+            printf("  %4d %20.20s %20.20s %20.20s\n",
                    users[i].ID,
                    users[i].name,
                    caesar_decryption(users[i].password),

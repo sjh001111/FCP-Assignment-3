@@ -2,8 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Werror
 LIBDIR = ./libs
 
-main.out: main.o user.o caesar.o rle.o searching.o sorting.o xor.o # huffman.o
-	$(CC) $(CFLAGS) -o main.out main.o user.o caesar.o rle.o searching.o sorting.o xor.o
+main.out: main.o user.o caesar.o rle.o binary_search.o radix_sort.o xor.o # huffman.o
+	$(CC) $(CFLAGS) -o main.out main.o user.o caesar.o rle.o binary_search.o radix_sort.o xor.o
 	
 main.o: main.c
 	$(CC) $(CFLAGS) -c -o main.o main.c 
@@ -20,14 +20,14 @@ caesar.o: $(LIBDIR)/caesar.c
 rle.o: $(LIBDIR)/rle.c
 	$(CC) $(CFLAGS) -c -o rle.o $(LIBDIR)/rle.c
 	
-searching.o: $(LIBDIR)/searching.c
-	$(CC) $(CFLAGS) -c -o searching.o $(LIBDIR)/searching.c
+binary_search.o: $(LIBDIR)/binary_search.c
+	$(CC) $(CFLAGS) -c -o binary_search.o $(LIBDIR)/binary_search.c
 	
-sorting.o: $(LIBDIR)/sorting.c
-	$(CC) $(CFLAGS) -c -o sorting.o $(LIBDIR)/sorting.c
+radix_sort.o: $(LIBDIR)/radix_sort.c
+	$(CC) $(CFLAGS) -c -o radix_sort.o $(LIBDIR)/radix_sort.c
 	
 xor.o: $(LIBDIR)/xor.c
 	$(CC) $(CFLAGS) -c -o xor.o $(LIBDIR)/xor.c
 
 clean:
-	rm main.out main.o user.o caesar.o rle.o searching.o sorting.o xor.o
+	rm main.out main.o user.o caesar.o rle.o binary_search.o radix_sort.o xor.o

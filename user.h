@@ -17,6 +17,8 @@ void delete_user(User users[], int *count);
 void display_users(User users[], int *count);
 void save_users(User users[], int *count);
 void read_users(User users[], int *count);
-void display_debug(User users[], int *count);
+void sort_users(User users[], int *count);
+void search_user(User users[], int *count);
+void debug(User users[], int *count);
 
 #endif
