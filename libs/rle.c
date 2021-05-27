@@ -4,17 +4,17 @@
 #include "../user.h"
 #include "rle.h"
 
-// 런렝스 인코딩
+// run-length encoding
 char *run_length_encode(char *input)
 {
-    // 입력받은 문자열의 길이x2보다 1만큼 큰 문자열을 생성
-    // (런렝스 인코딩의 경우 원본 문자열보다 최대 2배 커질 수 있고,
-    // 임의로 생성하는 문자열은 마지막에 '\0'를 넣어줘야해서)
+    // Make a char[] with the length of twice + 1 of the inserted char[] length
+    // Because run-length encoding can be twice the bigger than the original char[]
+    // and the temporary made char[] must have a '\0' ate the end
     int j = 0, k, length = strlen(input), char_length;
     char *output = (char *)malloc(sizeof(char) * (length * 2 + 1));
     char count[MAX_STRING_SIZE];
 
-    // 연속된 글자 수 세서 인코딩함
+    // Count the repeated char and encodes
     for (int i = 0; i < length; i++)
     {
         output[j++] = input[i];
@@ -29,21 +29,21 @@ char *run_length_encode(char *input)
             output[j] = count[k];
     }
 
-    // 아웃풋 마지막에 '\0' 넣어서 문자열 완성~
+    // output[] is made with the'\0' at the end
     output[j] = '\0';
     return output;
 }
 
 char *run_length_decode(char *input)
 {
-    // 입력받은 문자열의 길이x2보다 1만큼 큰 문자열을 생성
-    // (런렝스 인코딩의 경우 원본 문자열보다 최대 2배 커질 수 있고,
-    // 임의로 생성하는 문자열은 마지막에 '\0'를 넣어줘야해서)
+    // Make a char[] with the length of twice + 1 of the inserted char[] length
+    // Because run-length encoding can be twice the bigger than the original char[]
+    // and the temporary made char[] must have a '\0' ate the end
     int j = 0, length = strlen(input);
     char *output = (char *)malloc(sizeof(char) * length);
     char temp;
 
-    // 글자와 그 글자의 개수를 읽어와서 원본 문자열로 복원시킴
+    // Read the character and the number of it to restore it to the original char[]
     for (int i = 0; i < length; i++)
     {
         if (input[i] == '\0')
@@ -61,7 +61,7 @@ char *run_length_decode(char *input)
             temp = input[i];
     }
 
-    // 아웃풋 마지막에 '\0' 넣어서 문자열 완성~
+    // output[] is made with the'\0' at the end
     output[j] = '\0';
     return output;
 }
