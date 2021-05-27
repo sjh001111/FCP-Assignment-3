@@ -4,20 +4,20 @@
 
 int binary_search(User users[], int count, int search)
 {
-   int first, last, middle;
-   first = 0;
-   last = count - 1;
-   middle = (first + last) / 2;
+   int start, end, center;
+   start = 0;
+   end = count - 1;
+   center = (start + end) / 2;
 
-   while (first <= last)
+   while (start <= end)
    {
-      if (users[middle].ID < search)
-         first = middle + 1;
-      else if (users[middle].ID == search)
-         return middle;
+      if (users[center].ID < search)
+         start = center + 1;
+      else if (users[center].ID == search)
+         return center;
       else
-         last = middle - 1;
-      middle = (first + last) / 2;
+         end = center - 1;
+      center = (start + end) / 2;
    }
 
    return -1;
