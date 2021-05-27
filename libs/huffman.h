@@ -2,8 +2,6 @@
 #define HUFFMAN_H
 
 #define MAX_BUFFER_SIZE 256
-#define INVALID_BIT_READ -1
-#define INVALID_BIT_WRITE -1
 
 typedef struct
 {

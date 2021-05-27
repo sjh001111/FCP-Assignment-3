@@ -14,8 +14,6 @@ int main(int argc, char *argv[])
     if (argc > 1 && !strcmp(argv[1], "debug"))
         dbg = 1;
 
-    initialize();
-
     do
     {
         print_menu(dbg);
@@ -23,8 +21,6 @@ int main(int argc, char *argv[])
         getchar();
         printf("\n");
     } while (menu(users, &count, i, dbg));
-
-    finalize();
 
     return 0;
 }
