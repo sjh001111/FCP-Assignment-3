@@ -1,3 +1,18 @@
+/*
+ * Lab07 G2
+ *
+ * 13740802 Joonghyuk Seong
+ * 13659901 Min Soo Joh
+ * 12700302 Dongwok Hong
+ * 13659709 Hong Joo Lee
+ * 13660042 Myungseok Seo
+ * 
+ * 1. Type "make" to build
+ * 2. Type "./main.out" to run in default mode
+ * 3. Type "./main.out debug" to run in debugging mode
+ * 4. Type "make clean" to delete useless files
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include "user.h"
