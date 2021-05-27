@@ -1,3 +1,10 @@
+/*
+ * huffman
+ * https://github.com/gyaikhom/huffman
+ * Copyright (c) 2016 Gagarine Yaikhom
+ * The MIT License (MIT)
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,8 +15,8 @@ int alphabets;
 int active;
 unsigned int original_size;
 
-int *frequency;
 Node *nodes;
+int *frequency;
 int *leaves;
 int *parents;
 
@@ -64,7 +71,7 @@ int huffman_encode(const char *input, const char *output)
     current = 0;
     eof_input = 0;
     free_index = 1;
-    
+
     finalize();
 
     return 0;
@@ -102,7 +109,7 @@ int huffman_decode(const char *input, const char *output)
     free_index = 1;
 
     finalize();
-    
+
     return 0;
 }
 
@@ -349,14 +356,14 @@ int flush_buffer(FILE *file)
 
 void initialize()
 {
-     alphabets = 256;
- active = 0;
- original_size = 0;
- free_index = 1;
- nodes_size = 0;
- bits_in_buffer = 0;
- current = 0;
- eof_input = 0;
+    alphabets = 256;
+    active = 0;
+    original_size = 0;
+    free_index = 1;
+    nodes_size = 0;
+    bits_in_buffer = 0;
+    current = 0;
+    eof_input = 0;
     frequency = (int *)
         calloc(2 * alphabets, sizeof(int));
     leaves = frequency + alphabets - 1;
