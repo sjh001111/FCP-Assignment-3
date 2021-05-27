@@ -16,7 +16,7 @@
 #include <stdio.h> /* printf,scanf */ 
 #include <string.h> /* */
 #include "user.h" /*add_user, display_users, save_users, read_users 
-sort_users,search_user, delete_user, debug*/
+                    sort_users,search_user, delete_user, debug*/
 
 void print_menu(int dbg);
 int menu(User users[], int *count, int i, int dbg);
