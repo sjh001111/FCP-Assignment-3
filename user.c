@@ -3,7 +3,7 @@
 #include <string.h>
 #include "user.h"
 #include "libs/rle.h"
-//#include "libs/huffman.h"
+#include "libs/huffman.h"
 #include "libs/xor.h"
 #include "libs/caesar.h"
 #include "libs/binary_search.h"
@@ -62,8 +62,8 @@ void display_users(User users[], int *count)
 {
     if (*count)
     {
-        printf("  ID   Name                 Encrypted password   Encrypted card num  \n"
-               "  â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n");
+        printf("   ID ¦¢ Name               ¦¢ Encrypted password ¦¢ Encrypted card num \n"
+               "  ¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡\n");
 
         for (int i = 0; i < *count; i++)
         {
@@ -83,18 +83,19 @@ void save_users(User users[], int *count)
 {
     FILE *fp;
 
-    fp = fopen("db.txt", "w");
+    fp = fopen(RLE_DB_FILE_NAME, "w");
 
     for (int i = 0; i < *count; i++)
     {
-        fprintf(fp, "%d||%s||%s||%s\n",
+        fprintf(fp, "%d\t%s\t%s\t%s\t\n",
                 users[i].ID,
-                run_length_compression(users[i].name),
-                run_length_compression(users[i].password),
-                run_length_compression(users[i].card_number));
+                run_length_encode(users[i].name),
+                run_length_encode(users[i].password),
+                run_length_encode(users[i].card_number));
     }
 
     fclose(fp);
+    huffman_encode(RLE_DB_FILE_NAME, HUFFMAN_DB_FILE_NAME);
     printf("  You have successfully saved the users to the database.\n\n");
 }
 
@@ -103,7 +104,9 @@ void read_users(User users[], int *count)
     FILE *fp;
     User user;
 
-    if ((fp = fopen("db.txt", "r")) == NULL)
+    huffman_decode(HUFFMAN_DB_FILE_NAME, RLE_DB_FILE_NAME);
+
+    if ((fp = fopen(RLE_DB_FILE_NAME, "r")) == NULL)
     {
         printf("  Error: No database file\n");
         return;
@@ -112,16 +115,16 @@ void read_users(User users[], int *count)
     *count = 0;
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
-    {
-        if (fscanf(fp, "%d||%[^||]||%[^||]||%[^||]",
+    {            
+        if (fscanf(fp, "%d\t%[^\t]\t%[^\t]\t%[^\t]\t",
                    &user.ID,
                    user.name,
                    user.password,
                    user.card_number) == 4)
         {
-            strcpy(user.name, run_length_decompression(user.name));
-            strcpy(user.password, run_length_decompression(user.password));
-            strcpy(user.card_number, run_length_decompression(user.card_number));
+            strcpy(user.name, run_length_decode(user.name));
+            strcpy(user.password, run_length_decode(user.password));
+            strcpy(user.card_number, run_length_decode(user.card_number));
 
             users[i] = user;
             *count += 1;
@@ -147,8 +150,8 @@ void search_user(User users[], int *count)
     int index = binary_search(users, *count, ID);
 
     if (index != -1)
-        printf("  ID   Name                 Encrypted password   Encrypted card num  \n"
-               "  â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n"
+        printf("   ID ¦¢ Name               ¦¢ Encrypted password ¦¢ Encrypted card num \n"
+               "  ¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡\n"
                "  %4d %20.20s %20.20s %20.20s\n\n",
                users[index].ID,
                users[index].name,
@@ -172,16 +175,16 @@ void delete_user(User users[], int *count)
 void debug(User users[], int *count)
 {
     printf("  File : %s\n"
-           "  Func :%s()\n"
+           "  Func : %s()\n"
            "  Line : %05d\n\n",
            __FILE__, __func__, __LINE__);
 
     display_users(users, count);
     if (*count)
     {
-        printf("  ID   Name                 Decrypted password   Decrypted card num  \n"
-               "                            (Caesar Cipher)      (XOR Cipher)        \n"
-               "  â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n");
+        printf("   ID ¦¢ Name               ¦¢ Decrypted password ¦¢ Decrypted card num \n"
+               "      ¦¢                    ¦¢ (Caesar Cipher)    ¦¢ (XOR Cipher)       \n"
+               "  ¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡\n");
 
         for (int i = 0; i < *count; i++)
         {

@@ -4,7 +4,7 @@
 #include "../user.h"
 #include "rle.h"
 
-char *run_length_compression(char *input)
+char *run_length_encode(char *input)
 {
     int j = 0, k, length = strlen(input), char_length;
     char count[MAX_STRING_SIZE];
@@ -28,7 +28,7 @@ char *run_length_compression(char *input)
     return output;
 }
 
-char *run_length_decompression(char *input)
+char *run_length_decode(char *input)
 {
     int j = 0, length = strlen(input);
     char temp;

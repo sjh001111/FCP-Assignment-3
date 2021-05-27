@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "user.h"
+#include "libs/huffman.h"
 
 void print_menu(int dbg);
 int menu(User users[], int *count, int i, int dbg);
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
     if (argc > 1 && !strcmp(argv[1], "debug"))
         dbg = 1;
 
+    initialize();
+
     do
     {
         print_menu(dbg);
@@ -20,6 +23,8 @@ int main(int argc, char *argv[])
         getchar();
         printf("\n");
     } while (menu(users, &count, i, dbg));
+
+    finalize();
 
     return 0;
 }
@@ -36,8 +41,8 @@ void print_menu(int dbg)
         "竹收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收羊\n"
         "弛 1. Add user (XOR encryption, caesar encryption)                     弛\n"
         "弛 2. Display users (XOR decryption, caesar decryption)                弛\n"
-        "弛 3. Save users (Run-length compression)                              弛\n"
-        "弛 4. Read users (Run-length decompression)                            弛\n"
+        "弛 3. Save users (Run-length encoding)                                 弛\n"
+        "弛 4. Read users (Run-length decoding)                                 弛\n"
         "弛 5. Sort users (Binary search)                                       弛\n"
         "弛 6. Search user (Radix sort)                                         弛\n"
         "弛 7. Delete user                                                      弛\n");
@@ -70,14 +75,14 @@ int menu(User users[], int *count, int i, int dbg)
     case 3:
         printf(
             "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
-            "弛 3. Save users (Run-length compression)                              弛\n"
+            "弛 3. Save users (Run-length encoding)                                 弛\n"
             "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
         save_users(users, count);
         break;
     case 4:
         printf(
             "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
-            "弛 4. Read users (Run-length decompression)                            弛\n"
+            "弛 4. Read users (Run-length decoding)                                 弛\n"
             "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
         read_users(users, count);
         break;
