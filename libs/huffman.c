@@ -11,6 +11,7 @@
 #include "../user.h"
 #include "huffman.h"
 
+// 전역 변수 안쓰면 너무 어려워져서 전역 변수 뾰로롱 생성~
 int alphabets;
 int active;
 unsigned int original_size;
@@ -30,6 +31,7 @@ int bits_in_buffer;
 int current;
 int eof_input;
 
+// 허프만 인코딩
 int huffman_encode(const char *input, const char *output)
 {
     FILE *fin, *fout;
@@ -77,6 +79,7 @@ int huffman_encode(const char *input, const char *output)
     return 0;
 }
 
+// 허프만 디코딩
 int huffman_decode(const char *input, const char *output)
 {
     FILE *fin, *fout;
@@ -113,6 +116,7 @@ int huffman_decode(const char *input, const char *output)
     return 0;
 }
 
+// 인풋 파일의 frequency를 체크함
 void determine_frequency(FILE *file)
 {
     int i;
@@ -128,6 +132,7 @@ void determine_frequency(FILE *file)
             ++active;
 }
 
+// tree를 만들기 위해 각 배열에 메모리를 할당함
 void allocate_tree()
 {
     nodes = (Node *)
@@ -136,6 +141,7 @@ void allocate_tree()
         calloc(active, sizeof(int));
 }
 
+// 각 leaves 추가 (leaf는 자식이 없는 node)
 void add_leaves()
 {
     int i, freq;
@@ -147,6 +153,7 @@ void add_leaves()
     }
 }
 
+// 트리 만듬
 void build_tree()
 {
     int a, b, index;
@@ -159,6 +166,7 @@ void build_tree()
     }
 }
 
+// 노드 추가
 int add_node(int index, int weight)
 {
     int i = nodes_size++;
@@ -184,6 +192,7 @@ int add_node(int index, int weight)
     return i;
 }
 
+// 알파벳 인코딩함
 void encode_alphabet(FILE *output, int character)
 {
     int node_index;
@@ -198,6 +207,7 @@ void encode_alphabet(FILE *output, int character)
         write_bit(output, stack[stack_top]);
 }
 
+// bit stream 디코딩함
 void decode_bit_stream(FILE *input, FILE *output)
 {
     int i = 0, bit, node_index = nodes[nodes_size].index;
@@ -218,6 +228,7 @@ void decode_bit_stream(FILE *input, FILE *output)
     }
 }
 
+// 바이너리 파일을 비트 단위로 씀
 int write_bit(FILE *file, int bit)
 {
     if (bits_in_buffer == MAX_BUFFER_SIZE << 3)
@@ -236,6 +247,7 @@ int write_bit(FILE *file, int bit)
     return 0;
 }
 
+// 바이너리 파일을 파일 비트 단위로 읽음 
 int read_bit(FILE *file)
 {
     if (current == bits_in_buffer)
@@ -265,6 +277,7 @@ int read_bit(FILE *file)
     return bit;
 }
 
+// 헤더 씀 뭔지 모름 사실
 int write_header(FILE *file)
 {
     int i, j, byte = 0,
@@ -295,6 +308,7 @@ int write_header(FILE *file)
     return 0;
 }
 
+// 헤더 읽음 뭔지 모름 사실
 int read_header(FILE *file)
 {
     int i, j, byte = 0, size;
@@ -340,6 +354,7 @@ int read_header(FILE *file)
     return 0;
 }
 
+// 뭐야 얜
 int flush_buffer(FILE *file)
 {
     if (bits_in_buffer)
@@ -354,6 +369,7 @@ int flush_buffer(FILE *file)
     return 0;
 }
 
+// 값들 초기화
 void initialize()
 {
     alphabets = 256;
@@ -369,6 +385,7 @@ void initialize()
     leaves = frequency + alphabets - 1;
 }
 
+// 작업 끝내면 메모리 할당 해제
 void finalize()
 {
     free(frequency);
