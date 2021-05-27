@@ -42,9 +42,8 @@ int main(int argc, char *argv[])
 
 void print_menu(int dbg)
 {
-    // 이 아래로 printf 함수는 width가 80자가 넘는데
-    // 80자 아래로 만들 경우 코드의 가독성이 10창나기 때문에
-    // 그대로 두는게 맞다고 판단했다~
+    /* under this, the width of the printf function goes over 80 characters,
+     * but due to the readability, it was left alone only for this part */
     printf(
         "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
     if (dbg)
