@@ -54,8 +54,8 @@ void print_menu(int dbg)
         "竹收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收羊\n"
         "弛 1. Add user (XOR encryption, caesar encryption)                     弛\n"
         "弛 2. Display users (XOR decryption, caesar decryption)                弛\n"
-        "弛 3. Save users (Run-length encoding)                                 弛\n"
-        "弛 4. Read users (Run-length decoding)                                 弛\n"
+        "弛 3. Save users (Run-length encoding, Huffman encoding)               弛\n"
+        "弛 4. Read users (Run-length decoding, Huffman decoding)               弛\n"
         "弛 5. Sort users (Binary search)                                       弛\n"
         "弛 6. Search user (Radix sort)                                         弛\n"
         "弛 7. Delete user                                                      弛\n");
@@ -88,14 +88,14 @@ int menu(User users[], int *count, int i, int dbg)
     case 3:
         printf(
             "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
-            "弛 3. Save users (Run-length encoding)                                 弛\n"
+            "弛 3. Save users (Run-length encoding, Huffman encoding)               弛\n"
             "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
         save_users(users, count);
         break;
     case 4:
         printf(
             "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖\n"
-            "弛 4. Read users (Run-length decoding)                                 弛\n"
+            "弛 4. Read users (Run-length decoding, Huffman decoding)               弛\n"
             "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎\n");
         read_users(users, count);
         break;
