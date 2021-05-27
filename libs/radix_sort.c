@@ -25,13 +25,13 @@ void count_sort(User users[], int count, int value)
     for (i = 1; i < 10; i++)
         cnt[i] += cnt[i - 1];
 
-//sort by correct order
+//sort by correct order in sorted_users[]
     for (i = count - 1; i >= 0; i--)
     {
         sorted_users[cnt[(users[i].ID / value) % 10] - 1] = users[i];
         cnt[(users[i].ID / value) % 10]--;
     }
-//replace the users[] by the new sorted one
+//replace the users[] by the new sorted sorted_users[]
     for (i = 0; i < count; i++)
         users[i] = sorted_users[i];
 }
