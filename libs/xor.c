@@ -7,7 +7,7 @@
 char *XOR_cipher(char *input)
 {
     /* Generate a char[] that is 1 greater than the length 
-    of the input char[] (because temporary char[] needs'\0' at the end)*/
+     * of the input char[] (because temporary char[] needs'\0' at the end) */
     int i, j = 0, length = strlen(input);
     char *output = (char *)malloc(sizeof(char) * (length + 1));
     // Make a key called S, J, H
