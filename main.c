@@ -16,7 +16,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "user.h"
-#include "libs/huffman.h"
 
 void print_menu(int dbg);
 int menu(User users[], int *count, int i, int dbg);
