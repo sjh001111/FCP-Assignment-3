@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../user.h"
 #include "binary_search.h"
 

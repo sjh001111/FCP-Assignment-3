@@ -1,13 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>              /* printf(), scanf(), fopen(), fprintf()
+                                 * fprintf(), fscanf(), fclose(), */
+#include <stdlib.h>             // rand(), atoll()
+#include <string.h>             // strcpy()
 #include "user.h"
-#include "libs/rle.h"
-#include "libs/huffman.h"
-#include "libs/xor.h"
-#include "libs/caesar.h"
-#include "libs/binary_search.h"
-#include "libs/radix_sort.h"
+#include "libs/rle.h"           // run_length_encode(), run_length_decode()
+#include "libs/huffman.h"       // huffman_encode(), huffman_decode()
+#include "libs/xor.h"           // XOR_cipher()
+#include "libs/caesar.h"        // caesar_encryption(), caesar_decryption()
+#include "libs/binary_search.h" // binary_search()
+#include "libs/radix_sort.h"    // radix_sort()
 
 //add new user information and is encrypted
 void add_user(User users[], int *count)
@@ -58,6 +59,7 @@ void add_user(User users[], int *count)
 
     printf("\n  You have successfully added the user.\n\n");
 }
+
 //display users in the program
 void display_users(User users[], int *count)
 {
@@ -79,6 +81,7 @@ void display_users(User users[], int *count)
     else
         printf("  Error: No employee\n\n");
 }
+
 // saves the user in the program to the database(.txt)
 void save_users(User users[], int *count)
 {
@@ -99,6 +102,7 @@ void save_users(User users[], int *count)
     huffman_encode(RLE_DB_FILE_NAME, HUFFMAN_DB_FILE_NAME);
     printf("  You have successfully saved the users to the database.\n\n");
 }
+
 //brings user information from the database(.txt) to the program
 void read_users(User users[], int *count)
 {
@@ -116,7 +120,7 @@ void read_users(User users[], int *count)
     *count = 0;
 
     for (int i = 0; i < MAX_USERS_SIZE; i++)
-    {            
+    {
         if (fscanf(fp, "%d\t%[^\t]\t%[^\t]\t%[^\t]\t",
                    &user.ID,
                    user.name,
@@ -135,12 +139,14 @@ void read_users(User users[], int *count)
     fclose(fp);
     printf("  The database has been read successfully.\n\n");
 }
+
 // sorts the user by ID.
 void sort_users(User users[], int *count)
 {
     radix_sort(users, *count);
     printf("  Users have been sorted successfully.\n\n");
 }
+
 // Search the user by ID
 void search_user(User users[], int *count)
 {
@@ -161,6 +167,7 @@ void search_user(User users[], int *count)
     else
         printf("  Error: No matching ID\n\n");
 }
+
 // Delete the last user saved in the program
 void delete_user(User users[], int *count)
 {
@@ -172,7 +179,8 @@ void delete_user(User users[], int *count)
     else
         printf("  Error: No employee\n\n");
 }
-// decrypted user information is shown 
+
+// decrypted user information is shown
 void debug(User users[], int *count)
 {
     printf("  File : %s\n"

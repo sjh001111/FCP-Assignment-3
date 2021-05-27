@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../user.h"
 #include "radix_sort.h"
 
@@ -43,11 +42,4 @@ void radix_sort(User users[], int count)
 
     for (value = 1; max / value > 0; value *= 10)
         count_sort(users, count, value);
-}
-
-void show(int dataset[], int count)
-{
-    int i;
-    for (i = 0; i < count; i++)
-        printf("%d ", dataset[i]);
 }

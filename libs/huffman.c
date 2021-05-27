@@ -5,9 +5,10 @@
  * The MIT License (MIT)
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>   /* perror(), fopen(), fclose(), fgetc(), fseek(),
+                      * fwrite(), fread(), feof(), ferror() */
+#include <stdlib.h>  // calloc(), free()
+#include <string.h>  // memset(), memcpy() 
 #include "../user.h"
 #include "huffman.h"
 

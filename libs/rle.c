@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>   // sprintf()
+#include <stdlib.h>  // malloc()
+#include <string.h>  // strlen()
 #include "../user.h"
 #include "rle.h"
 
